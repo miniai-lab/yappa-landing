@@ -173,53 +173,70 @@ body {
     box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
 }
 
-/* Секция преимуществ */
-.features {
+/* Общие стили для секций с иконками */
+.features,
+.functionality,
+.installation {
     padding: 80px 0;
     background: var(--white);
 }
 
-.features h2 {
+.features h2,
+.functionality h2,
+.installation h2 {
     text-align: center;
     font-size: 36px;
     margin-bottom: 60px;
     color: var(--secondary-color);
 }
 
-.features-grid {
+/* Общие стили для сеток с карточками */
+.features-grid,
+.installation-steps {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
 
-.feature-card {
+/* Общие стили для карточек */
+.feature-card,
+.installation-step {
     padding: 40px;
     background: var(--white);
     border-radius: 16px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     transition: all 0.3s ease;
     border: 1px solid rgba(0,0,0,0.1);
+    text-align: center;
 }
 
-.feature-card:hover {
+.feature-card:hover,
+.installation-step:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 24px rgba(0,0,0,0.1);
 }
 
-.feature-card i {
+/* Общие стили для иконок */
+.feature-card i,
+.installation-step i {
     font-size: 40px;
     color: var(--primary-color);
     margin-bottom: 20px;
 }
 
-.feature-card h3 {
+/* Общие стили для заголовков в карточках */
+.feature-card h3,
+.installation-step h3 {
     font-size: 24px;
     margin-bottom: 15px;
     color: var(--secondary-color);
 }
 
-.feature-card p {
+/* Общие стили для текста в карточках */
+.feature-card p,
+.installation-step p {
     color: var(--text-color);
+    line-height: 1.6;
 }
 
 /* Как это работает */
