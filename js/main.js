@@ -52,4 +52,29 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = 'auto';
         }
     });
-}); 
+});
+
+function handleSubmit(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const formData = new FormData(form);
+    
+    // Собираем данные из формы
+    const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message')
+    };
+    
+    // Здесь будет отправка на сервер
+    console.log('Form data:', data);
+    
+    // Временное решение - показываем уведомление
+    alert('Thank you for your message! We will contact you soon.');
+    
+    // Очищаем форму
+    form.reset();
+    
+    return false;
+} 

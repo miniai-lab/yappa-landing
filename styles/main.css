@@ -439,6 +439,22 @@ body {
     height: 150px;
 }
 
+.contact-info {
+    padding: 20px;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.contact-info i {
+    color: var(--primary-color);
+    font-size: 20px;
+}
+
 /* Footer */
 .footer {
     background: var(--secondary-color);
@@ -589,5 +605,46 @@ body {
     font-size: 14px;
     opacity: 0.8;
     color: var(--white);
+}
+
+.download {
+    padding: 80px 0;
+    text-align: center;
+    background-color: #f8f9fa;
+}
+
+.download-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.download-description {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-download:hover {
+    background-color: #0056b3;
+}
+
+.download-note {
+    margin-top: 20px;
+    color: #666;
+    font-size: 0.9rem;
 }
  
