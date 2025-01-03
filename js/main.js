@@ -52,29 +52,34 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = 'auto';
         }
     });
-});
 
-function handleSubmit(event) {
-    event.preventDefault();
+    // Находим все кнопки, включая кнопку в навигации
+    const downloadButtons = document.querySelectorAll('a[href="#download"], .btn-download, .nav-download');
     
-    const form = event.target;
-    const formData = new FormData(form);
-    
-    // Собираем данные из формы
-    const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        message: formData.get('message')
-    };
-    
-    // Здесь будет отправка на сервер
-    console.log('Form data:', data);
-    
-    // Временное решение - показываем уведомление
-    alert('Thank you for your message! We will contact you soon.');
-    
-    // Очищаем форму
-    form.reset();
-    
-    return false;
-} 
+    // Обработчик для кнопок
+    downloadButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Проверяем загрузку Mailchimp
+            if (window.chimpInstance && typeof window.chimpInstance.showModal === 'function') {
+                window.chimpInstance.showModal();
+            } else {
+                // Пробуем подождать загрузку Mailchimp
+                setTimeout(() => {
+                    if (window.chimpInstance && typeof window.chimpInstance.showModal === 'function') {
+                        window.chimpInstance.showModal();
+                    } else {
+                        console.error('Mailchimp popup is not available');
+                    }
+                }, 1000);
+            }
+        });
+    });
+
+    // Удаляем старый код модального окна для загрузки
+    const downloadModal = document.getElementById('downloadModal');
+    if (downloadModal) {
+        downloadModal.remove();
+    }
+}); 
