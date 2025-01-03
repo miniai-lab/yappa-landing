@@ -53,8 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Находим все кнопки, включая кнопку в навигации
-    const downloadButtons = document.querySelectorAll('a[href="#download"], .btn-download, .nav-download');
+    // Находим все кнопки по специальному классу
+    const downloadButtons = document.querySelectorAll('.mailchimp-trigger');
     
     // Обработчик для кнопок
     downloadButtons.forEach(button => {
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.chimpInstance && typeof window.chimpInstance.showModal === 'function') {
                 window.chimpInstance.showModal();
             } else {
-                // Пробуем подождать загрузку Mailchimp
+                // Если Mailchimp не загрузился сразу, ждем секунду и пробуем снова
                 setTimeout(() => {
                     if (window.chimpInstance && typeof window.chimpInstance.showModal === 'function') {
                         window.chimpInstance.showModal();
