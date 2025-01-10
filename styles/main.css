@@ -97,7 +97,8 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('pattern.svg') repeat;
+    /* Закомментируем или удалим background с pattern.svg */
+    /* background: url('pattern.svg') repeat; */
     opacity: 0.1;
 }
 
@@ -650,5 +651,120 @@ body {
     margin-top: 20px;
     color: #666;
     font-size: 0.9rem;
+}
+
+/* Стили для кастомного попапа */
+.custom-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.close-popup {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--text-color);
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.close-popup:hover {
+    opacity: 1;
+}
+
+/* Стили для формы Mailchimp */
+#mc_embed_signup {
+    background: #fff;
+    clear: left;
+    font: 14px Helvetica, Arial, sans-serif;
+    width: 100%;
+}
+
+#mc_embed_signup form {
+    padding: 0;
+}
+
+#mc_embed_signup h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+}
+
+#mc_embed_signup .mc-field-group {
+    margin-bottom: 20px;
+}
+
+#mc_embed_signup input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+#mc_embed_signup .button {
+    background: var(--primary-color);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#mc_embed_signup .button:hover {
+    background: var(--accent-color);
+}
+
+/* Обновляем стили для кнопок в hero секции */
+.hero-buttons .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 32px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    background: var(--white);
+    border-radius: 12px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    min-width: 200px;
+}
+
+.hero-buttons .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+    background: var(--light-gray);
+    color: var(--accent-color);
+}
+
+/* Добавляем стили для всех кнопок с классом mailchimp-trigger */
+.mailchimp-trigger {
+    cursor: pointer;
+    user-select: none;
 }
  

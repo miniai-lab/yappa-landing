@@ -14,9 +14,24 @@
         gtag('config', 'G-8GGR6K7P19');
     </script>
     <!-- Mailchimp script -->
-    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/4c0f4b8046c5442b2335c4db5/1e502bd6ca6604b27fe45645d.js");</script>
+    <script id="mcjs">
+        window.mcPopupLoader = function() {
+            !function(c,h,i,m,p){
+                m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p);
+                m.onload = function() {
+                    console.log('Mailchimp script loaded successfully');
+                };
+                m.onerror = function() {
+                    console.error('Failed to load Mailchimp script');
+                };
+            }(document,"script","https://chimpstatic.com/mcjs-connected/js/users/4c0f4b8046c5442b2335c4db5/1e502bd6ca6604b27fe45645d.js");
+        };
+        window.mcPopupLoader();
+    </script>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Подключаем наш скрипт -->
+    <script src="js/main.js" defer></script>
 </head>
 <body>
     <!-- Навигация -->
@@ -28,7 +43,7 @@
                 <li><a href="#how-it-works">How it works</a></li>
                 <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="#download" class="btn-primary">Download</a></li>
+                <li><a class="btn-primary mailchimp-trigger">Download</a></li>
             </ul>
         </div>
     </nav>
@@ -40,7 +55,9 @@
                 <h1>Speak. Don't Type.</h1>
                 <p class="hero-subtitle">Transform your Windows PC into a powerful voice-to-text tool</p>
                 <div class="hero-buttons">
-                    <a href="#download" class="btn-primary">Download and Start Free Trial</a>
+                    <button class="btn-primary mailchimp-trigger">
+                        Download and Start Free Trial
+                    </button>
                 </div>
                 <p class="hero-note">14-day free trial • Windows 10/11 • No credit card required</p>
             </div>
@@ -167,7 +184,7 @@
             <h2>Ready to Get Started?</h2>
             <div class="download-content">
                 <p class="download-description">Download YappaType and enjoy 14 days of free use</p>
-                <a href="#" class="btn-download">
+                <a class="btn-download mailchimp-trigger">
                     <i class="fas fa-download"></i>
                     Download YappaType
                 </a>
@@ -182,15 +199,9 @@
             <h2>Contact Us</h2>
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h3>Our Contacts</h3>
                     <p><i class="fas fa-envelope"></i> support@yappatype.com</p>
                 </div>
-                <form class="contact-form" id="contactForm" onsubmit="return handleSubmit(event)">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Email" required>
-                    <textarea name="message" placeholder="Your Message" required></textarea>
-                    <button type="submit" class="btn-primary">Send</button>
-                </form>
+
             </div>
         </div>
     </section>
@@ -227,6 +238,31 @@
     </footer>
 
     <!-- Добавляем перед закрывающим тегом body -->
-    <script src="js/main.js"></script>
+    <div id="customPopup" class="custom-popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <div id="mc_embed_signup">
+                <form action="https://yappatype.us7.list-manage.com/subscribe/post?u=4c0f4b8046c5442b2335c4db5&amp;id=f10c943b2c&amp;f_id=0055fae0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                    <div id="mc_embed_signup_scroll">
+                        <h2>We will send you a link to download your version of the product via email.</h2>
+                        <div class="mc-field-group">
+                            <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
+                            <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required>
+                        </div>
+                        <div id="mce-responses" class="clear foot">
+                            <div class="response" id="mce-error-response" style="display: none;"></div>
+                            <div class="response" id="mce-success-response" style="display: none;"></div>
+                        </div>
+                        <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                            <input type="text" name="b_4c0f4b8046c5442b2335c4db5_f10c943b2c" tabindex="-1" value="">
+                        </div>
+                        <div class="clear foot">
+                            <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Get Download Link">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html> 
