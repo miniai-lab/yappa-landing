@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YappaType - Voice Text Input</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8GGR6K7P19"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-8GGR6K7P19');
+    </script>
+    <!-- Mailchimp script -->
+    <script id="mcjs">
+        window.mcPopupLoader = function() {
+            !function(c,h,i,m,p){
+                m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p);
+                m.onload = function() {
+                    console.log('Mailchimp script loaded successfully');
+                };
+                m.onerror = function() {
+                    console.error('Failed to load Mailchimp script');
+                };
+            }(document,"script","https://chimpstatic.com/mcjs-connected/js/users/4c0f4b8046c5442b2335c4db5/1e502bd6ca6604b27fe45645d.js");
+        };
+        window.mcPopupLoader();
+    </script>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Подключаем наш скрипт -->
+    <script src="../js/main.js" defer></script>
+    <link rel="alternate" hreflang="en" href="https://yourdomain.com/en/" />
+    <link rel="alternate" hreflang="ru" href="https://yourdomain.com/ru/" />
+    
+    <!-- Добавляем стили для языкового переключателя -->
+    <style>
+        .language-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .language-current {
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+            padding: 0 15px;
+            line-height: 60px;
+            height: 100%;
+        }
+        
+        .language-current i {
+            margin-left: 5px;
+            font-size: 12px;
+        }
+        
+        .language-options {
+            position: absolute;
+            background-color: white;
+            width: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            display: none;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 100%;
+            white-space: nowrap;
+        }
+        
+        .language-options a {
+            color: black;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+        
+        .language-options a:hover {
+            background-color: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        .show {
+            display: block;
+        }
+        
+        .nav-links li {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">YappaType</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How it works</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a class="btn-primary mailchimp-trigger">Download</a></li>
+                <li class="language-dropdown">
+                    <div class="language-current" onclick="toggleLanguageMenu()">
+                        EN <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div id="languageMenu" class="language-options">
+                        <a href="../ru/" onclick="sessionStorage.setItem('languageSelected', 'true');">RU</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Главный экран -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Speak. Don't Type.</h1>
+                <p class="hero-subtitle">Transform your Windows PC into a powerful voice-to-text tool</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary mailchimp-trigger">
+                        Download and Start Free Trial
+                    </button>
+                </div>
+                <p class="hero-note">14-day free trial • Windows 10/11 • No credit card required</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Секция преимуществ -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>YappaType Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>3x Faster</h3>
+                    <p>120-150 words per minute instead of 40-50 with keyboard typing</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-keyboard"></i>
+                    <h3>Easy Launch</h3>
+                    <p>Press Alt+Space and start speaking</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-universal-access"></i>
+                    <h3>Accessibility</h3>
+                    <p>Ideal for people with limited mobility</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Как это работает -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2>How it works</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Launch the application</h3>
+                    <p>Press Alt+Space in any text field</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Start speaking</h3>
+                    <p>Speak naturally, the application will recognize your speech</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Done!</h3>
+                    <p>The text will appear where your cursor is</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Добавляем после секции How it works -->
+    <section id="installation" class="installation">
+        <div class="container">
+            <h2>Getting Started</h2>
+            <div class="installation-steps">
+                <div class="installation-step">
+                    <i class="fas fa-download"></i>
+                    <h3>1. Download</h3>
+                    <p>Download YappaType for Windows</p>
+                </div>
+                <div class="installation-step">
+                    <i class="fas fa-user-plus"></i>
+                    <h3>2. Create Account</h3>
+                    <p>Sign up to start your 14-day free trial</p>
+                </div>
+                <div class="installation-step">
+                    <i class="fas fa-microphone"></i>
+                    <h3>3. Start Using</h3>
+                    <p>Press Alt+Space and start speaking in any application</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Функциональность -->
+    <section id="functionality" class="functionality">
+        <div class="container">
+            <h2>Functionality</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Works everywhere</h3>
+                    <p>Compatibility with any applications and websites</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-keyboard"></i>
+                    <h3>Customizable keys</h3>
+                    <p>Choose a convenient key combination to launch</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-language"></i>
+                    <h3>Multilingual</h3>
+                    <p>Support for various languages for speech recognition</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>What are the system requirements?</h3>
+                    <p>The application works on Windows 10 and newer with minimal system requirements.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Do I need internet?</h3>
+                    <p>Yes, stable internet connection is required for speech recognition to work.</p>
+                </div>
+                <!-- Добавьте больше вопросов -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Убираем секцию pricing и заменяем на download -->
+    <section id="download" class="download">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <div class="download-content">
+                <p class="download-description">Download YappaType and enjoy 14 days of free use</p>
+                <a class="btn-download mailchimp-trigger">
+                    <i class="fas fa-download"></i>
+                    Download YappaType
+                </a>
+                <p class="download-note">No credit card required • Windows 10/11</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> support@yappatype.com</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>YappaType</h4>
+                    <p>Revolution in text input</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#download">Download</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#privacy">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 YappaType. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Добавляем перед закрывающим тегом body -->
+    <div id="customPopup" class="custom-popup">
+        <div class="popup-content">
+            <span class="close-popup">&times;</span>
+            <div id="mc_embed_signup">
+                <form action="https://yappatype.us7.list-manage.com/subscribe/post?u=4c0f4b8046c5442b2335c4db5&amp;id=f10c943b2c&amp;f_id=0055fae0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                    <div id="mc_embed_signup_scroll">
+                        <h2>We will send you a link to download your version of the product via email.</h2>
+                        <div class="mc-field-group">
+                            <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
+                            <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required>
+                        </div>
+                        <div id="mce-responses" class="clear foot">
+                            <div class="response" id="mce-error-response" style="display: none;"></div>
+                            <div class="response" id="mce-success-response" style="display: none;"></div>
+                        </div>
+                        <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                            <input type="text" name="b_4c0f4b8046c5442b2335c4db5_f10c943b2c" tabindex="-1" value="">
+                        </div>
+                        <div class="clear foot">
+                            <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Get Download Link">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Функция для открытия/закрытия меню языков
+        function toggleLanguageMenu() {
+            document.getElementById("languageMenu").classList.toggle("show");
+        }
+        
+        // Закрыть меню, если пользователь щелкает за его пределами
+        window.onclick = function(event) {
+            if (!event.target.matches('.language-current') && !event.target.matches('.language-current i')) {
+                var dropdowns = document.getElementsByClassName("language-options");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html> 
