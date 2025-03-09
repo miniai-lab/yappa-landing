@@ -12,165 +12,258 @@
         gtag('js', new Date());
         gtag('config', 'G-8GGR6K7P19');
 
-        // Функция для автоматического запуска скачивания файла
+        // Function for automatic file download
         function downloadFile() {
             var link = document.createElement('a');
-            link.href = 'to_download/YappaTypeSetup.exe'; // Путь к файлу для скачивания
-            link.download = 'YappaTypeSetup.exe'; // Имя файла при скачивании
+            link.href = 'to_download/YappaTypeSetup.exe'; // Path to the file for download
+            link.download = 'YappaTypeSetup.exe'; // Name of the file when downloading
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
             
-            // Обновляем статус
-            document.getElementById('download-status').textContent = 'Скачивание началось!';
+            // Update status
+            document.getElementById('download-status').textContent = 'Download started!';
             document.getElementById('download-status').className = 'status success';
         }
 
-        // Функция перенаправления на английскую версию сайта
+        // Function to redirect to the main page
         function redirectToEnglish() {
-            // Показываем обратный отсчет
+            // Show countdown
             var countdown = 3;
-            var countdownElement = document.getElementById('countdown');
             
-            // Обновляем строку статуса
-            document.getElementById('redirect-status').innerHTML = 'Перенаправление через <span id="countdown">3</span> секунды...';
+            // Update status text first
+            document.getElementById('redirect-status').innerHTML = 'Redirecting in <span id="countdown">3</span> seconds...';
             document.getElementById('redirect-status').className = 'status pending';
             
-            // Запускаем обратный отсчет
+            // Get element reference AFTER the HTML has been updated
+            var countdownElement = document.getElementById('countdown');
+            
+            // Start countdown
             var countdownInterval = setInterval(function() {
                 countdown--;
                 countdownElement.textContent = countdown;
                 
                 if (countdown <= 0) {
                     clearInterval(countdownInterval);
-                    window.location.href = 'en/';
+                    redirectToMainPage();
                 }
             }, 1000);
         }
 
-        // При загрузке страницы запускаем скачивание и перенаправление
+        // Reliable function to redirect to main page
+        function redirectToMainPage() {
+            try {
+                // Try absolute path to root using location
+                var rootUrl = window.location.origin + window.location.pathname.split('/').slice(0, -1).join('/');
+                if (rootUrl === window.location.origin) {
+                    // If we're already at the root, go to root explicitly
+                    window.location.href = window.location.origin + '/';
+                } else {
+                    window.location.href = rootUrl;
+                }
+            } catch (e) {
+                // Fallback method 1: go to the root
+                try {
+                    window.location.href = '/';
+                } catch (e2) {
+                    // Fallback method 2: try en directory
+                    try {
+                        window.location.href = 'en/';
+                    } catch (e3) {
+                        // Final fallback: go to index.html
+                        window.location.href = 'index.html';
+                    }
+                }
+            }
+        }
+
+        // Function to go back to the previous page
+        function goBack() {
+            window.history.back();
+        }
+
+        // When the page loads, start download and redirection
         window.onload = function() {
             downloadFile();
             
-            // Задержка перед редиректом увеличена, чтобы показать обратный отсчет
+            // Delay before redirect, increased to show countdown
             setTimeout(redirectToEnglish, 1000);
             
-            // Предотвращаем автоматический редирект при тестировании, если передан параметр noredirect
+            // Prevent automatic redirect during testing if noredirect parameter is provided
             var urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('noredirect')) {
-                document.getElementById('redirect-status').innerHTML = 'Автоматическое перенаправление отключено для тестирования';
+                document.getElementById('redirect-status').innerHTML = 'Automatic redirection disabled for testing';
                 document.getElementById('manual-redirect').style.display = 'block';
             }
+            
+            // Set up a failsafe redirect in case the countdown is interrupted
+            setTimeout(function() {
+                redirectToMainPage();
+            }, 5000);
         };
         
-        // Функция для принудительного перехода на страницу
+        // Function for manual redirection to the site
         function goToSite() {
-            window.location.href = 'en/';
+            redirectToMainPage();
         }
     </script>
     <style>
+        :root {
+            --primary-color: #7C3AED;
+            --secondary-color: #1F2937;
+            --accent-color: #EC4899;
+            --text-color: #374151;
+            --light-gray: #F9FAFB;
+            --white: #FFFFFF;
+            --gradient: linear-gradient(135deg, #7C3AED 0%, #EC4899 100%);
+        }
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f5f5f5;
+            padding: 0;
+            background: var(--gradient);
+            overflow-x: hidden;
         }
+        
         .container {
             text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            max-width: 500px;
+            padding: 2.5rem;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            max-width: 550px;
+            width: 90%;
         }
+        
         h1 {
-            color: #333;
-            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
         }
+        
         p {
-            color: #666;
-            margin-bottom: 10px;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            font-size: 16px;
         }
+        
         .status {
-            padding: 10px;
-            border-radius: 4px;
-            margin: 10px 0;
-            font-weight: bold;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-weight: 500;
+            font-size: 16px;
         }
+        
         .success {
-            background-color: #e8f5e9;
-            color: #2e7d32;
-            border: 1px solid #c8e6c9;
+            background-color: #E8F5E9;
+            color: #2E7D32;
+            border: 1px solid #C8E6C9;
         }
+        
         .pending {
-            background-color: #fff8e1;
-            color: #ff8f00;
-            border: 1px solid #ffecb3;
+            background-color: #FFF8E1;
+            color: #FF8F00;
+            border: 1px solid #FFECB3;
         }
+        
         .download-button {
             display: inline-block;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 24px;
             text-decoration: none;
-            border-radius: 4px;
-            font-weight: bold;
-            margin-top: 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 20px;
             cursor: pointer;
             border: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            box-shadow: 0 4px 6px rgba(124, 58, 237, 0.12);
         }
+        
         .download-button:hover {
-            background-color: #45a049;
+            background-color: #6025c9;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(124, 58, 237, 0.15);
         }
+        
         .redirect-button {
             display: inline-block;
-            background-color: #2196F3;
-            color: white;
-            padding: 10px 20px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 12px 24px;
             text-decoration: none;
-            border-radius: 4px;
-            font-weight: bold;
-            margin-top: 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 20px;
             cursor: pointer;
             border: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            box-shadow: 0 4px 6px rgba(236, 72, 153, 0.12);
         }
+        
         .redirect-button:hover {
-            background-color: #0b7dda;
+            background-color: #d61f7e;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(236, 72, 153, 0.15);
         }
+        
         #manual-redirect {
             display: none;
-            margin-top: 20px;
+            margin-top: 25px;
         }
+        
         #back-button {
             display: inline-block;
-            background-color: #9e9e9e;
-            color: white;
-            padding: 8px 15px;
+            background-color: rgba(31, 41, 55, 0.1);
+            color: var(--secondary-color);
+            padding: 8px 16px;
             text-decoration: none;
-            border-radius: 4px;
-            margin-top: 20px;
+            border-radius: 6px;
+            margin-top: 25px;
             font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        #back-button:hover {
+            background-color: rgba(31, 41, 55, 0.2);
+        }
+        
+        #countdown {
+            font-weight: 700;
+            color: var(--primary-color);
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <h1>YappaType</h1>
-        <p id="download-status" class="status pending">Инициализация скачивания...</p>
-        <p id="redirect-status" class="status pending">Подготовка перенаправления...</p>
+        <p id="download-status" class="status pending">Initializing download...</p>
+        <p id="redirect-status" class="status pending">Preparing redirection...</p>
         
-        <!-- Кнопка для ручного скачивания, если автоматическое не сработало -->
-        <a href="to_download/YappaTypeSetup.exe" class="download-button" download>Скачать вручную</a>
+        <!-- Button for manual download if automatic download failed -->
+        <a href="to_download/YappaTypeSetup.exe" class="download-button" download>Download Manually</a>
         
-        <!-- Блок с кнопкой для ручного перенаправления при тестировании -->
+        <!-- Block with button for manual redirection during testing -->
         <div id="manual-redirect">
-            <button class="redirect-button" onclick="goToSite()">Перейти на сайт сейчас</button>
+            <button class="redirect-button" onclick="goToSite()">Go to Website Now</button>
         </div>
         
-        <a href="test-download.html" id="back-button">← Вернуться к тестовой странице</a>
+        <button id="back-button" onclick="goBack()">← Back to Previous Page</button>
     </div>
 </body>
 </html> 
