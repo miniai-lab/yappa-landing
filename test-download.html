@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YappaType - Test Download</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        .test-button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin: 10px;
+        }
+        .test-button:hover {
+            background-color: #45a049;
+        }
+        .test-button.blue {
+            background-color: #2196F3;
+        }
+        .test-button.blue:hover {
+            background-color: #0b7dda;
+        }
+        .notes {
+            background-color: #fffde7;
+            border-left: 4px solid #ffeb3b;
+            padding: 15px;
+            margin-top: 30px;
+            border-radius: 0 4px 4px 0;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Тестирование скачивания</h1>
+        <p>Нажмите кнопку ниже, чтобы проверить работу скрипта автоматического скачивания и редиректа.</p>
+        
+        <a href="redirect.html" class="test-button">Проверить скачивание</a>
+        
+        <button class="test-button blue" onclick="simulateMailchimpSubmit()">Симулировать отправку формы</button>
+        
+        <a href="redirect.html?noredirect=true" class="test-button" style="background-color: #ff9800;">Тест без авторедиректа</a>
+        
+        <div class="notes">
+            <h3>Что должно произойти:</h3>
+            <ol>
+                <li>После нажатия на кнопку вы будете перенаправлены на страницу redirect.html</li>
+                <li>Браузер автоматически начнет скачивание файла YappaTypeSetup.exe</li>
+                <li>Через 1.5 секунды вы будете перенаправлены на английскую версию сайта</li>
+            </ol>
+            <p><strong>Примечание:</strong> Если скачивание не начинается, проверьте, нет ли в браузере блокировки всплывающих окон или автоматических скачиваний.</p>
+        </div>
+    </div>
+    
+    <script>
+        // Функция для симуляции отправки формы Mailchimp с последующим редиректом
+        function simulateMailchimpSubmit() {
+            alert("Симуляция отправки формы MailChimp...\nСейчас вы будете перенаправлены на страницу скачивания.");
+            setTimeout(function() {
+                window.location.href = "redirect.html";
+            }, 1000);
+        }
+    </script>
+</body>
+</html> 
