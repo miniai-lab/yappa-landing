@@ -136,7 +136,7 @@
         if (!gclid) return;
         const tgLinks = document.querySelectorAll('a[href^="https://t.me/voice_ai_to_text_bot?start={gclid}"]');
         tgLinks.forEach(link => {
-            link.href = `https://t.me/voice_ai_to_text_bot?start=${encodeURIComponent(gclid)}`;
+            link.href = `https://t.me/voice_ai_to_text_bot?start=${encodeURIComponent('g_' + gclid)}`;
         });
     }
 
