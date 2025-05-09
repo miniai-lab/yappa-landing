@@ -42,7 +42,7 @@
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#how-it-works">How It Works</a></li>
-                <li><a class="btn-primary" href="https://t.me/YourBot?start={gclid}" target="_blank">Open Bot</a></li>
+                <li><a class="btn-primary" href="https://t.me/voice_ai_to_text_bot?start={gclid}" target="_blank">Open Bot</a></li>
             </ul>
         </div>
     </nav>
@@ -54,7 +54,7 @@
                 <h1>YappaType Bot</h1>
                 <p class="hero-subtitle">Voice to Text directly in your Telegram</p>
                 <div class="hero-buttons">
-                    <a class="btn-primary" href="https://t.me/YourBot?start={gclid}" target="_blank">
+                    <a class="btn-primary" href="https://t.me/voice_ai_to_text_bot?start={gclid}" target="_blank">
                         <i class="fab fa-telegram-plane"></i> Launch Bot
                     </a>
                 </div>
@@ -134,9 +134,9 @@
     function updateTelegramLinks() {
         const gclid = getGclid();
         if (!gclid) return;
-        const tgLinks = document.querySelectorAll('a[href^="https://t.me/YourBot?start={gclid}"]');
+        const tgLinks = document.querySelectorAll('a[href^="https://t.me/voice_ai_to_text_bot?start={gclid}"]');
         tgLinks.forEach(link => {
-            link.href = `https://t.me/YourBot?start=${encodeURIComponent(gclid)}`;
+            link.href = `https://t.me/voice_ai_to_text_bot?start=${encodeURIComponent(gclid)}`;
         });
     }
 
