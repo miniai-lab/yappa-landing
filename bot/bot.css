@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+body { font-family: 'Poppins', sans-serif; background: var(--light-gray); }
+
+/* Glassmorphism navbar */
+.navbar { background: rgba(255,255,255,0.3); backdrop-filter: blur(10px); border-bottom: none; }
+
+/* Underline animation on nav links */
+.nav-links a { position: relative; padding-bottom: 8px; }
+.nav-links a::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px; background: var(--primary-color); transition: all 0.3s ease; }
+.nav-links a:hover::after { width: 100%; left: 0; }
+
+/* Dark overlay and pop for hero */
+.hero { position: relative; overflow: hidden; padding: 48px 0; }
+.hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.35); }
+.hero .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; text-align: center; }
+.hero-content h1 { font-size: 3.5rem; margin-bottom: 16px; color: var(--white); }
+.hero-content p.hero-subtitle { font-size: 1.25rem; margin-bottom: 32px; color: var(--white); opacity: 0.9; }
+
+/* Новая анимация fadeInUp */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Feature cards hover effect and animation */
+.feature-card { background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); transition: all 0.3s ease; opacity: 0; animation: fadeInUp 0.6s ease forwards; }
+.features-grid .feature-card:nth-child(1) { animation-delay: 0.2s; }
+.features-grid .feature-card:nth-child(2) { animation-delay: 0.4s; }
+.features-grid .feature-card:nth-child(3) { animation-delay: 0.6s; }
+.feature-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+
+/* Button enhancement */
+.btn-primary { box-shadow: 0 4px 12px rgba(124,58,237,0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; display: inline-flex; align-items: center; justify-content: center; text-transform: uppercase; gap: 16px; padding: 18px 36px; white-space: nowrap; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(124,58,237,0.4); }
+
+/* Улучшаем визуальную иерархию для секций */
+.features, .how-it-works { padding: 80px 0; } 

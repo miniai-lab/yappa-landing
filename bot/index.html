@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YappaType Bot – Voice to Text in Telegram</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8GGR6K7P19"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-8GGR6K7P19');
+    </script>
+    
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(100268224, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/100268224" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="bot.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">YappaType Bot</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a class="btn-primary" href="https://t.me/YourBot?start={gclid}" target="_blank">Open Bot</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Главный экран -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>YappaType Bot</h1>
+                <p class="hero-subtitle">Voice to Text directly in your Telegram</p>
+                <div class="hero-buttons">
+                    <a class="btn-primary" href="https://t.me/YourBot?start={gclid}" target="_blank">
+                        <i class="fab fa-telegram-plane"></i> Launch Bot
+                    </a>
+                </div>
+                <p class="hero-note">Forward existing voice messages or record new ones</p>
+                <p class="hero-features">⚡ Fast transcription of voice messages and audio files; 🎤 Record voice notes directly in chat; 📨 Send existing audio files for transcription; 🌐 Multilingual support</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Возможности -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>YappaType Bot Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Fast Transcription</h3>
+                    <p>Get transcriptions of voice messages and audio files in seconds</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-microphone"></i>
+                    <h3>Record Voice Notes</h3>
+                    <p>Record voice directly in chat and get text output</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-share"></i>
+                    <h3>Send Existing Voice Messages &amp; Audio Files</h3>
+                    <p>Send your saved voice messages or audio files for transcription</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-language"></i>
+                    <h3>Multilingual Transcription</h3>
+                    <p>Transcription in multiple languages</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Как это работает -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Open Chat with the Bot</h3>
+                    <p>Follow the link and press "Start"</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Send a Voice Message</h3>
+                    <p>Record a new one or forward an existing one</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Receive Text</h3>
+                    <p>The transcribed text will appear in the chat</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 YappaType. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+    // Функция для получения gclid из URL
+    function getGclid() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get('gclid');
+    }
+
+    function updateTelegramLinks() {
+        const gclid = getGclid();
+        if (!gclid) return;
+        const tgLinks = document.querySelectorAll('a[href^="https://t.me/YourBot?start={gclid}"]');
+        tgLinks.forEach(link => {
+            link.href = `https://t.me/YourBot?start=${encodeURIComponent(gclid)}`;
+        });
+    }
+
+    window.addEventListener('DOMContentLoaded', updateTelegramLinks);
+    </script>
+</body>
+</html> 
